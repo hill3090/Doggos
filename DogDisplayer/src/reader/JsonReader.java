@@ -24,26 +24,10 @@ public class JsonReader {
   }
 
   public JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-    
-	  /*
-	   *  Creates an InputStream object. Uses a URL object + .openStream() 
-	   *  to return an InputStream object.
-	   */
-	  InputStream is = new URL(url).openStream();
+   	  InputStream is = new URL(url).openStream();
     try {
-      /*
-       * Use of BufferedReader object to efficiently read the characters
-       * within the InputStreamReader object. UTF-8 is the charset that is
-       * usually accepted.
-       */
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-      /*
-       * Send buffered reader to readAll method 
-       */
       String jsonText = readAll(rd);
-      /*
-       * 
-       */
       JSONObject json = new JSONObject(jsonText);
       return json;
     } finally {
